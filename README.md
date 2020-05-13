@@ -21,6 +21,14 @@ String strA = utils_asukiaaa::string::padStart("123", 10, '0'));
 String strB = utils_asukiaaa::string::padEnd("bb", 10, '-'));
 ```
 
+padNumStart and padNumEnd
+```c
+// strA becomes "0000000123"
+String strA = utils_asukiaaa::string::padNumStart(123, 10, '0'));
+// strB becomes "99--------"
+String strB = utils_asukiaaa::string::padNumEnd(99, 10, '-'));
+```
+
 ## wire
 
 See [an example project for wire](./examples/wire/wire.ino).
