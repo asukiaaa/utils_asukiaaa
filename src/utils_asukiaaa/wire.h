@@ -1,3 +1,6 @@
+#ifndef _UTILS_ASUKIAAA_WIRE_H_
+#define _UTILS_ASUKIAAA_WIRE_H_
+
 #include <Arduino.h>
 #include <Wire.h>
 
@@ -30,3 +33,5 @@ namespace utils_asukiaaa {
     }
   }
 }
+
+#endif
