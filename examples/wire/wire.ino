@@ -1,3 +1,4 @@
+#include <utils_asukiaaa.h>
 #include <utils_asukiaaa/wire.h>
 #define TARGET_DEVICE_ADDRESS 0x08
 #define TARGET_WRITE_REGISTER_ADDRESS 0x00
