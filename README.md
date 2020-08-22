@@ -27,12 +27,12 @@ void loop() {
 }
 ```
 
-Call process on changed to released or pressed
+Call process on changed to release or press
 ```
 if (btn.changedToPress()) {
-  // process on change to pressed
+  // process on change to press
 } else if (btn.changedToRelease()) {
-  // process on change to releaseed
+  // process on change to release
 }
 ```
 
