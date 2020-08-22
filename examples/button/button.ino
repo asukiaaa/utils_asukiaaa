@@ -1,10 +1,10 @@
 #include <utils_asukiaaa.h>
 #include <utils_asukiaaa/button.h>
 
-#define PIN_BTN_0 10
+#define PIN_BTN 10
 #define PIN_LED LED_BUILTIN
 
-utils_asukiaaa::button::Button btn(PIN_BTN_0);
+utils_asukiaaa::button::Button btn(PIN_BTN);
 
 void setup() {
   btn.begin();
