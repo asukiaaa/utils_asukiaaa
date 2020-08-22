@@ -6,7 +6,7 @@ Utility library to supply useful functions for Arduino.
 
 ## button
 
-See [an example project for string](./examples/button/button.ino).
+See [an example project for button](./examples/button/button.ino).
 
 Include
 ```c
