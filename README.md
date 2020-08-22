@@ -4,12 +4,54 @@ Utility library to supply useful functions for Arduino.
 
 # Usage
 
+## button
+
+See [an example project for string](./examples/button/button.ino).
+
+Include
+```c
+#include <utils_asukiaaa.h>
+#include <utils_asukiaaa/button.h>
+```
+
+Define with gpio pin
+```c
+#define PIN_BTN 10
+utils_asukiaaa::button::Button btn(PIN_BTN);
+```
+
+Call update in loop to check pin state
+```
+void loop() {
+  btn.update();
+}
+```
+
+Call process on changed to released or pressed
+```
+if (btn.changedToPress()) {
+  // process on change to pressed
+} else if (btn.changedToRelease()) {
+  // process on change to releaseed
+}
+```
+
+Call process by button state
+```
+if (btn.isPressing()) {
+  // process during pressed
+} else { // btn.isReleasing()
+  // process during released
+}
+```
+
 ## string
 
 See [an example project for string](./examples/string/string.ino).
 
 Include
 ```c
+#include <utils_asukiaaa.h>
 #include <utils_asukiaaa/string.h>
 ```
 
@@ -35,6 +77,7 @@ See [an example project for wire](./examples/wire/wire.ino).
 
 Include
 ```c
+#include <utils_asukiaaa.h>
 #include <utils_asukiaaa/wire.h>
 ```
 
