@@ -118,6 +118,27 @@ if (readResult != 0) {
 }
 ```
 
+PeripheralHandler
+See [wirePheripheral](examples/wirePeripheral/wirePheripheral.ino) example.
+```c
+const uint16_t registerLen = 10;
+utils_asukiaaa::wire::PeripheralHandler wirePeri(&Wire, registerLen);
+unsigned long handledReceivedAt = 0;
+
+void setup() {
+  Wire.onReceive([](int v) { wirePeri.onReceive(v); });
+  Wire.onRequest([]() { wirePeri.onRequest(); });
+  Wire.begin(DEVICE_ADDRESS);
+}
+
+void loop() {
+  if (wirePeri.receivedAt != handledReceivedAt) {
+    handledReceivedAt = wirePeri.receivedAt;
+    // Do something for wirePeri.buffLen;
+  }
+}
+```
+
 # License
 
 MIT

@@ -27,5 +27,45 @@ namespace utils_asukiaaa {
       wire->write(data, dataLen);
       return wire->endTransmission();
     }
+
+    PeripheralHandler::PeripheralHandler(TwoWire* wire, int buffLen) {
+      this->wire = wire;
+      this->buffLen = buffLen;
+      buffs = new uint8_t[buffLen];
+      for (int i = 0; i < buffLen; ++i) {
+        buffs[0] = 0;
+      }
+      receivedLen = 0;
+      receivedAt = 0;
+    }
+
+    PeripheralHandler::~PeripheralHandler() {
+      delete[] buffs;
+    }
+
+    void PeripheralHandler::onReceive(int) {
+      receivedLen = 0;
+      while (0 < wire->available()) {
+        uint8_t v = wire->read();
+        if (receivedLen == 0) {
+          buffIndex = v;
+        } else {
+          if (buffIndex < buffLen) {
+            buffs[buffIndex] = v;
+          }
+          ++buffIndex;
+        }
+        ++receivedLen;
+      }
+      receivedAt = millis();
+    }
+
+    void PeripheralHandler::onRequest() {
+      if (buffIndex < buffLen) {
+        wire->write(&buffs[buffIndex], buffLen - buffIndex);
+      } else {
+        wire->write(0);
+      }
+    }
   }
 }

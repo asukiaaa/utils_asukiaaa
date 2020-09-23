@@ -14,18 +14,18 @@ void loop() {
   uint8_t writeLen = 3;
   int writeResult = utils_asukiaaa::wire::writeBytes(&Wire, TARGET_DEVICE_ADDRESS, TARGET_WRITE_REGISTER_ADDRESS, dataToWrite, writeLen);
   if (writeResult != 0) {
-    Serial.println("Failed to write because of error" + String(writeResult));
+    Serial.println("Failed to write because of error " + String(writeResult));
   } else {
-    Serial.println("Succeeded writing");
+    Serial.println("Succeeded in writing");
   }
 
   uint8_t readLen = 3;
   uint8_t dataThatRead[readLen];
   int readResult = utils_asukiaaa::wire::readBytes(&Wire, TARGET_DEVICE_ADDRESS, TARGET_READ_REGISTER_ADDRESS, dataThatRead, readLen);
   if (readResult != 0) {
-    Serial.println("Failed to read because of error" + String(readResult));
+    Serial.println("Failed to read because of error " + String(readResult));
   } else {
-    Serial.println("Succeeded reading");
+    Serial.println("Succeeded in reading");
     Serial.print("Received:");
     for (int i = 0; i < readLen; ++i) {
       Serial.print(" ");
@@ -33,4 +33,7 @@ void loop() {
     }
     Serial.println("");
   }
+  Serial.println("at " + String(millis()));
+  Serial.println("");
+  delay(500);
 }
