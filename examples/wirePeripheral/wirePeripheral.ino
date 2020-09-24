@@ -5,6 +5,13 @@
 
 const uint16_t registerLen = 10;
 utils_asukiaaa::wire::PeripheralHandler wirePeri(&Wire, registerLen);
+
+// // It can prohibit writing for register like this
+// bool prohibitWriting(int index) {
+//   return index == registerLen - 1;
+// }
+// utils_asukiaaa::wire::PeripheralHandler wirePeri(&Wire, registerLen, prohibitWriting);
+
 unsigned long handledReceivedAt = 0;
 
 void setup() {

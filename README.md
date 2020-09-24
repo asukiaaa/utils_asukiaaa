@@ -88,7 +88,7 @@ Valus for example
 #define TARGET_READ_REGISTER_ADDRESS 0x03
 ```
 
-writeBytes
+### writeBytes
 ```c
 uint8_t dataToWrite[] = {0, 1, 2};
 uint8_t writeLen = 3;
@@ -100,7 +100,7 @@ if (writeResult != 0) {
 }
 ```
 
-readBytes
+### readBytes
 ```c
 uint8_t readLen = 3;
 uint8_t dataThatRead[readLen];
@@ -118,7 +118,7 @@ if (readResult != 0) {
 }
 ```
 
-PeripheralHandler
+### PeripheralHandler
 See [wirePheripheral](examples/wirePeripheral/wirePheripheral.ino) example.
 ```c
 const uint16_t registerLen = 10;
@@ -137,6 +137,16 @@ void loop() {
     // Do something for wirePeri.buffLen;
   }
 }
+```
+
+It can prohibit writing for register by index.
+```
+const uint16_t registerLen = 10;
+bool prohibitWriting(int index) {
+  // Example: Prohibit writing for last register
+  return index == registerLen - 1;
+}
+utils_asukiaaa::wire::PeripheralHandler wirePeri(&Wire, registerLen, prohibitWriting);
 ```
 
 # License

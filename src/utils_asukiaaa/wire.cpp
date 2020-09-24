@@ -28,9 +28,10 @@ namespace utils_asukiaaa {
       return wire->endTransmission();
     }
 
-    PeripheralHandler::PeripheralHandler(TwoWire* wire, int buffLen) {
+    PeripheralHandler::PeripheralHandler(TwoWire* wire, int buffLen, bool (*prohibitWriting)(int index)) {
       this->wire = wire;
       this->buffLen = buffLen;
+      this->prohibitWriting = prohibitWriting;
       buffs = new uint8_t[buffLen];
       for (int i = 0; i < buffLen; ++i) {
         buffs[0] = 0;
@@ -50,7 +51,7 @@ namespace utils_asukiaaa {
         if (receivedLen == 0) {
           buffIndex = v;
         } else {
-          if (buffIndex < buffLen) {
+          if (buffIndex < buffLen && (prohibitWriting == NULL || !prohibitWriting(buffIndex))) {
             buffs[buffIndex] = v;
           }
           ++buffIndex;

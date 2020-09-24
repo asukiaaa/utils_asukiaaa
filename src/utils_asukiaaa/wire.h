@@ -11,7 +11,7 @@ namespace utils_asukiaaa {
 
     class PeripheralHandler {
     public:
-      PeripheralHandler(TwoWire* wire, int buffLen);
+      PeripheralHandler(TwoWire* wire, int buffLen, bool (*prohibitWriting)(int index) = NULL);
       ~PeripheralHandler();
       void onReceive(int);
       void onRequest();
@@ -23,6 +23,7 @@ namespace utils_asukiaaa {
     private:
       TwoWire* wire;
       int buffIndex;
+      bool (*prohibitWriting)(int index);
     };
   }
 }
