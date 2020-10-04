@@ -2,6 +2,15 @@
 
 Utility library to supply useful functions for Arduino.
 
+# Warning
+
+This library is deprecated.
+Please use the following libraries instead.
+
+- [button_asukiaaa](https://github.com/asukiaaa/arduino-button)
+- [string_asukiaaa](https://github.com/asukiaaa/arduino-string)
+- [wire_asukiaaa](https://github.com/asukiaaa/arduino-wire)
+
 # Usage
 
 ## button

@@ -3,9 +3,11 @@
 
 #include <Arduino.h>
 
+#warning "utils_asukiaaa/button.h is deprecated. Use other lib button_asukiaaa instead."
+
 namespace utils_asukiaaa {
   namespace button {
-    class ButtonState {
+    class [[deprecated("Use ButtonState in button_asukiaaa instead.")]] ButtonState {
      public:
       ButtonState(bool pressedPinState = LOW, unsigned long bufferMs = 20UL);
 
@@ -28,7 +30,7 @@ namespace utils_asukiaaa {
       bool pressedPinState;
     };
 
-    class Button: public ButtonState {
+    class [[deprecated("Use Button in button_asukiaaa instead.")]] Button: public ButtonState {
      public:
       Button(int pin,
              unsigned long bufferMs = 20UL,
